@@ -7,26 +7,27 @@ public class Main {
     private static Scanner scanner = new Scanner(System.in);
 
     public static void main(String[] args) {
-        int sizeOfArray;
+        int sizeArray;
 
         System.out.print("Type the size of your array: ");
-        sizeOfArray = scanner.nextInt();
+        sizeArray = scanner.nextInt();
 
-        int[]  myIntegers = getIntegers(sizeOfArray);
+        int[] array = getIntegers(sizeArray);
         System.out.println("Array without ordering");
-        printArray(myIntegers);
+        printArray(array);
 
-        int[] sorted = descendingOrder(myIntegers);
+        int[] sorted = descendingOrder(array);
         System.out.println("Array with ordering");
         printArray(sorted);
 
-        //System.out.println("The average is " + getAverage(myIntegers));
+        System.out.println("The average is " + getAverage(array));
+
+        System.out.println("The minimum value of the array is: " + findMin(array));
+        System.out.println("The maximum value of the array is: " + findMax(array));
     }
 
     public static void printArray(int[] myArray){
-        for(int i = 0; i<myArray.length; i++){
-            System.out.println("[" + i + "]" + ": " + myArray[i]);
-        }
+        System.out.println(Arrays.toString(myArray));
     }
 
     public static int[] getIntegers(int number){
@@ -61,6 +62,30 @@ public class Main {
             }
         }
         return sortedArray;
+    }
+
+    public static int findMin(int[] array){
+        int minimumValue = Integer.MAX_VALUE;
+
+        for(int i = 0; i < array.length; i++){
+            if(minimumValue > array[i]){
+                minimumValue = array[i];
+            }
+        }
+
+        return minimumValue;
+    }
+
+    public static int findMax(int[] array){
+        int maximumValue = Integer.MIN_VALUE;
+
+        for(int i = 0; i < array.length; i++){
+            if(maximumValue < array[i]){
+                maximumValue = array[i];
+            }
+        }
+
+        return maximumValue;
     }
 }
 
